@@ -9,6 +9,8 @@ const message_responder_1 = require("./services/message-responder");
 const discord_js_1 = require("discord.js");
 const hello_responder_1 = require("./services/hello-responder");
 const hello_message_1 = require("./services/hello-message");
+const woke_message_1 = require("./services/woke-message");
+const woke_responder_1 = require("./services/woke-responder");
 let container = new inversify_1.Container();
 container.bind(types_1.TYPES.Bot).to(bot_1.Bot).inSingletonScope();
 container.bind(types_1.TYPES.Client).toConstantValue(new discord_js_1.Client());
@@ -17,5 +19,7 @@ container.bind(types_1.TYPES.MessageResponder).to(message_responder_1.MessageRes
 container.bind(types_1.TYPES.HelloResponder).to(hello_responder_1.HelloResponder).inSingletonScope();
 container.bind(types_1.TYPES.HelloMessage).to(hello_message_1.HelloMessage).inSingletonScope();
 container.bind(types_1.TYPES.PingFinder).to(finder_ping_1.PingFinder).inSingletonScope();
+container.bind(types_1.TYPES.WokeMessage).to(woke_message_1.WokeMessage).inSingletonScope();
+container.bind(types_1.TYPES.WokeResponder).to(woke_responder_1.WokeResponder).inSingletonScope();
 exports.default = container;
 //# sourceMappingURL=inversify.config.js.map

@@ -6,18 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PingFinder = void 0;
+exports.WokeMessage = void 0;
 const inversify_1 = require("inversify");
-let PingFinder = class PingFinder {
+let WokeMessage = class WokeMessage {
     constructor() {
-        this.regexp = '!ping';
+        this.regexp = '!woke';
     }
-    isPing(stringToSearch) {
+    isWoke(stringToSearch) {
         return stringToSearch.search(this.regexp) >= 0;
     }
 };
-PingFinder = __decorate([
+WokeMessage = __decorate([
     inversify_1.injectable()
-], PingFinder);
-exports.PingFinder = PingFinder;
-//# sourceMappingURL=finder-ping.js.map
+], WokeMessage);
+exports.WokeMessage = WokeMessage;
+//# sourceMappingURL=woke-message.js.map

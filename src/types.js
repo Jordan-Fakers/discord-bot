@@ -6,8 +6,10 @@ exports.TYPES = {
     Client: Symbol("Client"),
     Token: Symbol("Token"),
     PingFinder: Symbol("PingFinder"),
+    MessageResponder: Symbol("MessagesResponder"),
     HelloMessage: Symbol("HelloMessage"),
     HelloResponder: Symbol("HelloResponder"),
-    MessageResponder: Symbol("MessagesResponder")
+    WokeMessage: Symbol("WokeMessage"),
+    WokeResponder: Symbol("WokeResponder")
 };
 //# sourceMappingURL=types.js.map

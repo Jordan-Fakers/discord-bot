@@ -18,12 +18,14 @@ const inversify_1 = require("inversify");
 const types_1 = require("./types");
 const message_responder_1 = require("./services/message-responder");
 const hello_responder_1 = require("./services/hello-responder");
+const woke_responder_1 = require("./services/woke-responder");
 let Bot = class Bot {
-    constructor(client, token, HelloResponder, messageResponder) {
+    constructor(client, token, HelloResponder, WokeResponder, messageResponder) {
         this.client = client;
         this.token = token;
         this.HelloResponder = HelloResponder;
         this.messageResponder = messageResponder;
+        this.WokeResponder = WokeResponder;
     }
     listen() {
         this.client.on('message', (message) => {
@@ -33,14 +35,19 @@ let Bot = class Bot {
             }
             console.log("Message received! Contents: ", message.content);
             this.messageResponder.handle(message).then(() => {
-                console.log("Response sent!");
+                console.log("ah, doesn't waiting for my answer huh!");
             }).catch(() => {
-                console.log("Response not sent.");
+                console.log("Mleh... to tired to answer this one.");
             }),
                 this.HelloResponder.handle(message).then(() => {
-                    console.log("Response sent!");
+                    console.log("I said Hi !!! <3");
                 }).catch(() => {
-                    console.log("Response not sent.");
+                    console.log("Not For me, I'll let this one.");
+                }),
+                this.WokeResponder.handle(message).then(() => {
+                    console.log("Stay Woke !!!");
+                }).catch(() => {
+                    console.log("Not For me, Not Wokish enough for my answer !! ");
                 });
         });
         return this.client.login(this.token);
@@ -51,8 +58,10 @@ Bot = __decorate([
     __param(0, inversify_1.inject(types_1.TYPES.Client)),
     __param(1, inversify_1.inject(types_1.TYPES.Token)),
     __param(2, inversify_1.inject(types_1.TYPES.HelloResponder)),
-    __param(3, inversify_1.inject(types_1.TYPES.MessageResponder)),
+    __param(3, inversify_1.inject(types_1.TYPES.WokeResponder)),
+    __param(4, inversify_1.inject(types_1.TYPES.MessageResponder)),
     __metadata("design:paramtypes", [discord_js_1.Client, String, hello_responder_1.HelloResponder,
+        woke_responder_1.WokeResponder,
         message_responder_1.MessageResponder])
 ], Bot);
 exports.Bot = Bot;
