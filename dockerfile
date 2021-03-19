@@ -1,17 +1,13 @@
 FROM node:latest
 
-ENV NODE_ENV=development
-
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json*", "./"]
-
-RUN npm init\
-&& npm install discord.js\
-&& npm install --development
-
-COPY .dockerignore
+#VOLUME /app
 
 COPY . .
 
-CMD ["node", "index.js"]
+RUN npm install -g typescript
+
+RUN npm install -g
+
+CMD ["npm", "run", "lazy"]
