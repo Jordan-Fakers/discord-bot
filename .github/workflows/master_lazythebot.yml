@@ -35,6 +35,6 @@ jobs:
 
     - name: npm start
       env:
-        token: ${{ TOKEN }}
+        token: ${{ secrets.TOKEN }}
       run:
         npm run start      
